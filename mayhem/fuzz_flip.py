@@ -12,7 +12,7 @@ with atheris.instrument_imports():
 def TestOneInput(data):
     fdp = fuzz_helpers.EnhancedFuzzedDataProvider(data)
     try:
-        flip(fdp.ConsumeRemainingString())
+        flip(fdp.ConsumeRemainingString(), clean_up=fdp.ConsumeBool(), no_flip=fdp.ConsumeBool(), long_form=fdp.ConsumeBool())
     except JSONDecodeError:
         return -1
 def main():
